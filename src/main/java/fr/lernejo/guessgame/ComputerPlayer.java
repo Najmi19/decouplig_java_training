@@ -1,7 +1,7 @@
 package fr.lernejo.guessgame;
 
 import java.security.SecureRandom;
-
+import java.util.Scanner;
 import fr.lernejo.logger.Logger;
 import fr.lernejo.logger.LoggerFactory;
 
@@ -27,6 +27,8 @@ public class ComputerPlayer implements Player {
         return (min - max)/2;
     }
 
+
+
     @Override
     public void respond(boolean lowerOrGreater) {
         if (!lowerOrGreater) {
@@ -38,3 +40,4 @@ public class ComputerPlayer implements Player {
 
     }
 }
+
