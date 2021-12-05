@@ -1,7 +1,7 @@
 package fr.lernejo.guessgame;
 
 import java.security.SecureRandom;
-import java.util.Scanner;
+
 import fr.lernejo.logger.Logger;
 import fr.lernejo.logger.LoggerFactory;
 
