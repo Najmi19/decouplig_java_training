@@ -12,13 +12,11 @@ public class Launcher {
         //Simulation simulation = new Simulation(player);
 
         switch (args[0]) {
-            // avec humain
             case "-interactive" : {
                 Player player = new HumanPlayer();
                 Simulation start_simulation = new Simulation(player);
                 SecureRandom random = new SecureRandom();
 
-                // long randomNumber = random.nextLong(); // génère un nombre entre Long.MIN_VALUE et Long.MAX_VALUE
                 long randomNumber = random.nextLong(100); // génère un nombre entre 0 (inclus) et 100 (exclus)
                 logger.log("Avec humain");
                 start_simulation.initialize(randomNumber,Long.MAX_VALUE);
@@ -26,7 +24,6 @@ public class Launcher {
                 break;
 
             }
-            //moi-meme
             case "-auto": {
                 Player player = new ComputerPlayer();
                 Simulation start_simulation = new Simulation(player);
