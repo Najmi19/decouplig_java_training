@@ -23,8 +23,19 @@ public class Launcher {
                 start_simulation.initialize(randomNumber,Long.MAX_VALUE);
                 start_simulation.loopUntilPlayerSucceed();
                 break;
+
+            }
+            //moi-meme
+            case "-auto": {
+                Player player = new ComputerPlayer();
+                Simulation start_simulation = new Simulation(player);
+                SecureRandom random = new SecureRandom();
+                long randomNumber = random.nextLong(100);
+                logger.log("Moi-meme");
+                start_simulation.initialize(randomNumber,Long.parseLong(args[1]));
+                start_simulation.loopUntilPlayerSucceed();
+                break;
             }
         }
     }
 }
-

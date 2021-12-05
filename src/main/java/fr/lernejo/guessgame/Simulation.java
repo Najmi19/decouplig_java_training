@@ -62,4 +62,3 @@ public class Simulation {
         logger.log("Time: " + simpleDateFormat.format(resultTime));
     }
 }
-
