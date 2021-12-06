@@ -28,10 +28,6 @@ public class Launcher {
         }
         else
             l.log("Erreur Argument :\n -interactive => partie interactive\n -auto [0-9] => partie robot");
-
-
-
-
     }
 
 
