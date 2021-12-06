@@ -1,39 +1,39 @@
 package fr.lernejo.guessgame;
 
+import fr.lernejo.logger.ConsoleLogger;
 import fr.lernejo.logger.Logger;
-import fr.lernejo.logger.LoggerFactory;
-
 import java.security.SecureRandom;
-//import fr.lernejo.logger.Logger;
+
 public class Launcher {
-    public static Logger logger = LoggerFactory.getLogger("mylauncher");
-    public static void main(String[] args){
-        // Player player= new Player();
-        //Simulation simulation = new Simulation(player);
+    public static void main(String[] args) {
 
-        switch (args[0]) {
-            case "-interactive" : {
-                Player player = new HumanPlayer();
-                Simulation start_simulation = new Simulation(player);
-                SecureRandom random = new SecureRandom();
+        Logger l =new ConsoleLogger();
 
-                long randomNumber = random.nextLong(100); // génère un nombre entre 0 (inclus) et 100 (exclus)
-                logger.log("Avec humain");
-                start_simulation.initialize(randomNumber,Long.MAX_VALUE);
-                start_simulation.loopUntilPlayerSucceed();
-                break;
+        if(args.length==1 && args[0].equals("-interactive"))
+        {
 
-            }
-            case "-auto": {
-                Player player = new ComputerPlayer();
-                Simulation start_simulation = new Simulation(player);
-                SecureRandom random = new SecureRandom();
-                long randomNumber = random.nextLong(100);
-                logger.log("Moi-meme");
-                start_simulation.initialize(randomNumber,Long.parseLong(args[1]));
-                start_simulation.loopUntilPlayerSucceed();
-                break;
-            }
+            SecureRandom random = new SecureRandom();
+            long randomNumber = random.nextInt(100); // génère un nombre entre 0 (inclus) et 100 (exclus)
+            Player player = new HumanPlayer();
+            Simulation sim = new Simulation(player);
+            sim.initialize(randomNumber);
+            sim.loopUntilPlayerSucceed(Long.MAX_VALUE);
         }
+        else if (args.length == 2 && (args[0].equals("-auto") && args[1].matches("[0-9]+")))
+        {
+            Player computerplayer = new ComputerPlayer();
+            Simulation sim = new Simulation(computerplayer);
+            sim.initialize(Long.parseLong(args[1]));
+            sim.loopUntilPlayerSucceed(1000);
+        }
+        else
+            l.log("Erreur Argument :\n -interactive => partie interactive\n -auto [0-9] => partie robot");
+
+
+
+
     }
+
+
 }
+

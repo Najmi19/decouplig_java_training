@@ -37,7 +37,7 @@ public class Simulation {
         return false;
     }
 
-    public void loopUntilPlayerSucceed() {
+    public void loopUntilPlayerSucceed(long maxValue) {
         boolean game_continue;//TODO add variable type
         int number_increment = 0;
 
@@ -60,5 +60,8 @@ public class Simulation {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("mm:ss.SSS"); // pattern for date
         Date resultTime = new Date(time_result);
         logger.log("Time: " + simpleDateFormat.format(resultTime));
+    }
+
+    public void initialize(long randomNumber) {
     }
 }
