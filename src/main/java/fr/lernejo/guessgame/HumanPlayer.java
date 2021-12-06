@@ -37,6 +37,5 @@ public class HumanPlayer implements Player{
     public void respond(boolean lowerOrGreater) {
         logger.log("input number was" + (lowerOrGreater ? "lower" : "greater"));
 
-
     }
 }
