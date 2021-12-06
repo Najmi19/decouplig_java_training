@@ -1,41 +1,29 @@
 package fr.lernejo.guessgame;
 
-import java.security.SecureRandom;
-import java.util.Scanner;
 import fr.lernejo.logger.Logger;
 import fr.lernejo.logger.LoggerFactory;
 
+import java.util.stream.LongStream;
+
 public class ComputerPlayer implements Player {
-    private final Logger logger = LoggerFactory.getLogger("ComputerPlayer");
-    private long min = Long.MIN_VALUE;
-    private long max = Long.MAX_VALUE;
-    private long player;
+    Logger logger = LoggerFactory.getLogger("player");
+    long min = Long.MIN_VALUE;
+    long max = Long.MAX_VALUE;
 
     @Override
     public long askNextGuess() {
-        SecureRandom random = new SecureRandom();
-        long guess = random.nextLong(min, max);
 
-        logger.log("Guessed " + guess);
-
-        player = guess;
-        return guess;
-
+        return (max + min) / 2;
     }
-
-    private long middle(){
-        return (min - max)/2;
-    }
-
-
 
     @Override
     public void respond(boolean lowerOrGreater) {
-        if (!lowerOrGreater) {
-            logger.log("The number is lower.");
-
+        if (lowerOrGreater) {
+            logger.log("Plus Grand");
+            min = (max + min) / 2;
         } else {
-            logger.log("The number is greater.");
+            logger.log("Plus Petit");
+            max = (max + min) / 2;
         }
 
     }
